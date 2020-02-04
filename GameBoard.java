@@ -1,16 +1,11 @@
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Map;
+
 class GameBoard {
     int finalSquare = 30;
     boolean isGameOver = false;
-    ArrayList<Integer> playerPositions;
-    GameBoard(){}
-    GameBoard(int noOfPlayers)
-    {
-        playerPositions = new ArrayList<Integer>(Collections.nCopies(noOfPlayers,0));
-    }
-    Map<Integer,Integer> snakesAndLadders = Map.ofEntries(
+    ArrayList<Integer> playerPositions; Map<Integer,Integer> snakesAndLadders = Map.ofEntries(
         Map.entry(3, 22),
         Map.entry(5,8),
         Map.entry(11,26),
@@ -20,12 +15,20 @@ class GameBoard {
         Map.entry(27,1)       
     );
 
+    GameBoard(){}
+    GameBoard(int noOfPlayers)
+    {
+        playerPositions = new ArrayList<Integer>(Collections.nCopies(noOfPlayers,0));
+    }
+   
+
     void displayWinner()
     {
-        System.out.println("Winner is: "+"player "+(playerPositions.indexOf(finalSquare) + 1));
+        int winner = playerPositions.indexOf(finalSquare) + 1;
+        System.out.println("Winner is: "+"player "+winner);
     }
     
-    void displayBoard()
+    void display()
     {
         System.out.println("Player Positions: "+playerPositions);
     }
