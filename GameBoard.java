@@ -18,8 +18,7 @@ class GameBoard {
     Printer printer = new Printer();
 
     GameBoard(){}
-    GameBoard(int noOfPlayers)
-    {
+    GameBoard(int noOfPlayers) {
         playerPositions = new ArrayList<Integer>(Collections.nCopies(noOfPlayers,0));
     }
 
@@ -27,7 +26,7 @@ class GameBoard {
         return playerPositions.contains(finalSquare); 
     }
 
-    void checkSnakeOrLadder(int position, int nextPosition){
+    void checkSnakeOrLadder(int position, int nextPosition) {
         if(nextPosition > position)
             printer.displayLadder();
         else if(nextPosition < position)
@@ -35,9 +34,9 @@ class GameBoard {
     }
 
     int getNextMove(int move) {
-        int nextMove = snakesAndLadders.getOrDefault(move,move);
-        checkSnakeOrLadder(move,nextMove);
-        return nextMove;
+        int nextPos = snakesAndLadders.getOrDefault(move,move);
+        checkSnakeOrLadder(move,nextPos);
+        return nextPos;
     }
 
     boolean checkMove(int move) {
