@@ -1,5 +1,5 @@
 import java.util.Scanner;
-class SnakeAndLadder {
+class Main {
     public static void main(String args[])
     {
         Scanner input = new Scanner(System.in);
