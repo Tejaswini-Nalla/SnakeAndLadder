@@ -5,8 +5,8 @@ class Main {
         Scanner input = new Scanner(System.in);
         System.out.println("Enter No Of Players");
         int noOfPlayers = input.nextInt();
-        GameController controller = new GameController(noOfPlayers);
-        controller.createPlayers();
-        controller.startGame();
+        GameController game = new GameController(noOfPlayers);
+        game.createPlayers();
+        game.start();
     }
 }

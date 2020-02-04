@@ -5,7 +5,8 @@ import java.util.Map;
 class GameBoard {
     int finalSquare = 30;
     boolean isGameOver = false;
-    ArrayList<Integer> playerPositions; Map<Integer,Integer> snakesAndLadders = Map.ofEntries(
+    ArrayList<Integer> playerPositions; 
+    Map<Integer,Integer> snakesAndLadders = Map.ofEntries(
         Map.entry(3, 22),
         Map.entry(5,8),
         Map.entry(11,26),
@@ -14,65 +15,33 @@ class GameBoard {
         Map.entry(21,9),
         Map.entry(27,1)       
     );
+    Printer printer = new Printer();
 
     GameBoard(){}
     GameBoard(int noOfPlayers)
     {
         playerPositions = new ArrayList<Integer>(Collections.nCopies(noOfPlayers,0));
     }
-   
 
-    void displayWinner()
-    {
-        int winner = playerPositions.indexOf(finalSquare) + 1;
-        System.out.println("Winner is: "+"player "+winner);
-    }
-    
-    void display()
-    {
-        System.out.println("Player Positions: "+playerPositions);
-    }
-
-    void displaySnakeOrLadder(int move,int pos)
-    {
-        if(pos>move)
-        {
-            System.out.println("Climbed Ladder");
-        }
-        else if(pos<move)
-        {
-            System.out.println("Swallowed By Snake");
-        }
-        else
-        {
-            System.out.println("No snake No Ladder");
-        }
-    }
-
-    boolean isGameOver()
-    {
+    boolean isGameOver() {
         return playerPositions.contains(finalSquare); 
     }
 
-    int nextMove(int move)
-    {
-        int pos = snakesAndLadders.getOrDefault(move,move);
-        displaySnakeOrLadder(move,pos);
-        return pos;
+    int getNextMove(int move) {
+        int nextMove = snakesAndLadders.getOrDefault(move,move);
+        printer.displaySnakeOrLadder(move,nextMove);
+        return nextMove;
     }
 
-    boolean checkMove(int move)
-    {
-        return move>finalSquare;
+    boolean checkMove(int move) {
+        return move > finalSquare;
     }
 
-    void placeMove(int roll, int player)
-    {
+    void placeMove(int roll, int player) {
         int playerCurPos = playerPositions.get(player);
         int move = playerCurPos + roll;
-        if(!checkMove(move))
-        {
-            int nextPos = nextMove(move);
+        if(!checkMove(move)) {
+            int nextPos = getNextMove(move);
             playerPositions.set(player,nextPos);
         }
     }

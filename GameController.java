@@ -4,6 +4,7 @@ class GameController{
     Player[] players;
     GameBoard board;
     Dice dice = new Dice();
+    Printer printer = new Printer();
 
     GameController(){}
     GameController(int noOfPlayers) {
@@ -19,25 +20,25 @@ class GameController{
 
     void playerturn(int player) {
         while(true) {
-            System.out.println((player+1)+" 's turn");
+            int currentPlayer = player+1;
+            System.out.println(currentPlayer+" 's turn");
             roll = players[player].rollDice(dice);
-            System.out.println((player+1)+" rolled "+roll);
+            System.out.println(currentPlayer+" rolled "+roll);
             board.placeMove(roll,player);
             if(!dice.isRolledSix(roll)) {
                 return;
             }
-            System.out.println("As "+(player+1)+" rolled "+roll+"again "+(player+1)+" 's turn");
+            System.out.println("As "+currentPlayer+" rolled "+roll+"again "+currentPlayer+" 's turn");
         }
     }
 
-    void startGame() {
+    void start() {
         while(true) {
             for(int playerNo = 0; playerNo<noOfPlayers; playerNo++) {
                 playerturn(playerNo);
-                board.display();
-                if(board.isGameOver())
-                {
-                    board.displayWinner();
+                printer.display(board);
+                if(board.isGameOver()) {
+                    printer.displayWinner(board);
                     return;
                 }
             }
