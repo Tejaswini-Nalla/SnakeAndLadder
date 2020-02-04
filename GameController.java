@@ -14,7 +14,7 @@ class GameController{
         while(true)
         {
             roll = players[player].rollDice(dice);
-            board.placeMove();
+            board.placeMove(roll,player);
             if(!dice.isRolledSix(roll))
             {
                 return;
@@ -30,7 +30,10 @@ class GameController{
             {
                 playerturn(playerno);
                 if(board.isGameOver())
+                {
+                    board.displayWinner();
                     return;
+                }
             }
         }
 

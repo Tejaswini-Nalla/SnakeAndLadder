@@ -20,12 +20,29 @@ class GameBoard {
 
     boolean isGameOver()
     {
-        return isGameOver; 
+        return playerPositions.contains(finalSquare); 
     }
 
-    void placeMove()
+    int nextMove(int move)
     {
-        
+        int pos = snakesAndLadders.getOrDefault(move,move);
+        return pos;
+    }
+
+    boolean checkMove(int move)
+    {
+        return move>finalSquare;
+    }
+
+    void placeMove(int roll, int player)
+    {
+        int playerCurPos = playerPositions.get(player);
+        int move = playerCurPos + roll;
+        if(!checkMove(move))
+        {
+            int nextPos = nextMove(move);
+            playerPositions.set(player,nextPos);
+        }
     }
 
 }
