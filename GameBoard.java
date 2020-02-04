@@ -30,6 +30,22 @@ class GameBoard {
         System.out.println(playerPositions);
     }
 
+    void displaySnakeOrLadder(int move,int pos)
+    {
+        if(pos>move)
+        {
+            System.out.println("Climbed Ladder");
+        }
+        else if(pos<move)
+        {
+            System.out.println("Swallowed By Snake");
+        }
+        else
+        {
+            System.out.println("No snake No Ladder");
+        }
+    }
+
     boolean isGameOver()
     {
         return playerPositions.contains(finalSquare); 
@@ -38,6 +54,7 @@ class GameBoard {
     int nextMove(int move)
     {
         int pos = snakesAndLadders.getOrDefault(move,move);
+        displaySnakeOrLadder(move,pos);
         return pos;
     }
 

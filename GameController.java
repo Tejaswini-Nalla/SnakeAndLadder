@@ -22,12 +22,15 @@ class GameController{
     {
         while(true)
         {
+            System.out.println((player+1)+" 's turn'");
             roll = players[player].rollDice(dice);
+            System.out.println((player+1)+" rolled "+roll);
             board.placeMove(roll,player);
             if(!dice.isRolledSix(roll))
             {
                 return;
             }
+            System.out.println("As "+(player+1)+" rolled "+roll+"again "+(player+1)+" 's turn'");
         }
     }
 
