@@ -6,6 +6,7 @@ class SnakeAndLadder {
         System.out.println("Enter No Of Players");
         int noOfPlayers = input.nextInt();
         GameController controller = new GameController(noOfPlayers);
+        controller.createPlayers();
         controller.startGame();
     }
 }

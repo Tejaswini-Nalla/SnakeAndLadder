@@ -1,12 +1,21 @@
 class GameController{
     int noOfPlayers;
     int roll;
-    Player[] players = new Player[noOfPlayers];
-    GameBoard board = new GameBoard(noOfPlayers);
+    Player[] players;
+    GameBoard board;
     Dice dice = new Dice();
+    GameController(){}
     GameController(int noOfPlayers)
     {
         this.noOfPlayers = noOfPlayers;
+        players = new Player[noOfPlayers];
+        board = new GameBoard(noOfPlayers);
+    }
+
+    void createPlayers()
+    {
+        for(int playerno=0; playerno<noOfPlayers; playerno++)
+            players[playerno] = new Player();
     }
 
     void playerturn(int player)
@@ -32,6 +41,7 @@ class GameController{
                 if(board.isGameOver())
                 {
                     board.displayWinner();
+                    board.displayBoard();
                     return;
                 }
                 board.displayBoard();
