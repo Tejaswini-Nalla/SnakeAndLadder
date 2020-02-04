@@ -1,6 +1,6 @@
 class GameController{
     int noOfPlayers;
-    int roll;
+    int rollValue;
     Player[] players;
     GameBoard board;
     Dice dice = new Dice();
@@ -18,15 +18,15 @@ class GameController{
             players[playerNo] = new Player();
     }
 
-    boolean isRolledSix(int roll)
+    boolean isRolledSix(int rollValue)
     {
-        return roll == 6;
+        return rollValue == 6;
     }
 
     void playTurn(int player) {
-        roll = players[player].rollDice(dice);
-        board.placeMove(roll,player);
-        if(isRolledSix(roll)) {
+        rollValue = players[player].rollDice(dice);
+        board.placeMove(rollValue,player);
+        if(isRolledSix(rollValue)) {
             playTurn(player);
         }
     }
