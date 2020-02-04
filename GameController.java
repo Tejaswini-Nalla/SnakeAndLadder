@@ -14,7 +14,7 @@ class GameController{
 
     void createPlayers()
     {
-        for(int playerno=0; playerno<noOfPlayers; playerno++)
+        for(int playerno = 0; playerno<noOfPlayers; playerno++)
             players[playerno] = new Player();
     }
 
@@ -22,7 +22,7 @@ class GameController{
     {
         while(true)
         {
-            System.out.println((player+1)+" 's turn'");
+            System.out.println((player+1)+" 's turn");
             roll = players[player].rollDice(dice);
             System.out.println((player+1)+" rolled "+roll);
             board.placeMove(roll,player);
@@ -30,7 +30,7 @@ class GameController{
             {
                 return;
             }
-            System.out.println("As "+(player+1)+" rolled "+roll+"again "+(player+1)+" 's turn'");
+            System.out.println("As "+(player+1)+" rolled "+roll+"again "+(player+1)+" 's turn");
         }
     }
 
@@ -41,13 +41,12 @@ class GameController{
             for(int playerno = 0; playerno<noOfPlayers; playerno++)
             {
                 playerturn(playerno);
+                board.displayBoard();
                 if(board.isGameOver())
                 {
                     board.displayWinner();
-                    board.displayBoard();
                     return;
                 }
-                board.displayBoard();
             }
         }
 

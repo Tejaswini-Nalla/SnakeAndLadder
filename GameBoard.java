@@ -27,7 +27,7 @@ class GameBoard {
     
     void displayBoard()
     {
-        System.out.println(playerPositions);
+        System.out.println("Player Positions: "+playerPositions);
     }
 
     void displaySnakeOrLadder(int move,int pos)
