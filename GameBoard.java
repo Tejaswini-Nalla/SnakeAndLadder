@@ -73,5 +73,4 @@ class GameBoard {
             playerPositions.set(player,nextPos);
         }
     }
-
 }
