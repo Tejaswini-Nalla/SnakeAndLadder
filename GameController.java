@@ -23,23 +23,22 @@ class GameController{
         return roll == 6;
     }
 
-    void playerturn(int player) {
-        while(true) {
-            roll = players[player].rollDice(dice);
-            board.placeMove(roll,player);
-            if(!isRolledSix(roll)) {
-                return;
-            }
+    void playTurn(int player) {
+        roll = players[player].rollDice(dice);
+        board.placeMove(roll,player);
+        if(isRolledSix(roll)) {
+            playTurn(player);
         }
     }
 
     void start() {
         while(true) {
             for(int playerNo = 0; playerNo<noOfPlayers; playerNo++) {
-                playerturn(playerNo);
-                printer.display(board);
+                playTurn(playerNo);
+                printer.displayPositions(board);
                 if(board.isGameOver()) {
-                    printer.displayWinner(board);
+                    int winner = board.playerPositions.indexOf(board.finalSquare) + 1;
+                    printer.displayWinner(winner);
                     return;
                 }
             }

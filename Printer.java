@@ -1,26 +1,20 @@
 class Printer{
 
-    void displayWinner(GameBoard board) {
-        int winner = board.playerPositions.indexOf(board.finalSquare) + 1;
+    void displayWinner(int winner) {
         System.out.println("Winner is: "+"player "+winner);
     }
     
-    void display(GameBoard board) {
+    void displayPositions(GameBoard board) {
         System.out.println("Player Positions: "+board.playerPositions);
     }
 
-    void displaySnakeOrLadder(int move,int nextMove) {
-        if(nextMove > move)
-        {
-            System.out.println("Climbed Ladder");
-        }
-        else if(nextMove < move)
-        {
-            System.out.println("Swallowed By Snake");
-        }
-        else
-        {
-            System.out.println("No snake No Ladder");
-        }
+    void displaySnake()
+    {
+        System.out.println("Swallowed by Snake");
+    }
+
+    void displayLadder()
+    {
+        System.out.println("Climbed Ladder");
     }
 }

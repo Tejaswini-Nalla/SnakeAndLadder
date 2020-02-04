@@ -27,9 +27,16 @@ class GameBoard {
         return playerPositions.contains(finalSquare); 
     }
 
+    void checkSnakeOrLadder(int position, int nextPosition){
+        if(nextPosition > position)
+            printer.displayLadder();
+        else if(nextPosition < position)
+            printer.displaySnake();
+    }
+
     int getNextMove(int move) {
         int nextMove = snakesAndLadders.getOrDefault(move,move);
-        printer.displaySnakeOrLadder(move,nextMove);
+        checkSnakeOrLadder(move,nextMove);
         return nextMove;
     }
 
@@ -39,9 +46,9 @@ class GameBoard {
 
     void placeMove(int roll, int player) {
         int playerPosition = playerPositions.get(player);
-        int move = playerPosition + roll;
-        if(!checkMove(move)) {
-            int nextPosition = getNextMove(move);
+        int position = playerPosition + roll;
+        if(!checkMove(position)) {
+            int nextPosition = getNextMove(position);
             playerPositions.set(player,nextPosition);
         }
     }
