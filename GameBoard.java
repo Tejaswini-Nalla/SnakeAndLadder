@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.Map;
 class GameBoard {
     int finalSquare = 30;
+    boolean isGameOver = false;
     ArrayList<Integer> playerPositions;
     GameBoard(int noOfPlayers)
     {
@@ -16,5 +17,15 @@ class GameBoard {
         Map.entry(21,9),
         Map.entry(27,1)       
     );
-    
+
+    boolean isGameOver()
+    {
+        return isGameOver; 
+    }
+
+    void placeMove()
+    {
+        
+    }
+
 }

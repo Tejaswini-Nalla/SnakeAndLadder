@@ -8,4 +8,9 @@ class Dice {
         diceValue = rand.nextInt(6)+1;
         return diceValue;
     }
+
+    boolean isRolledSix(int roll)
+    {
+        return roll==6;
+    }
 }
