@@ -32,16 +32,13 @@ class GameController{
     }
 
     void start() {
-        while(true) {
+        while(!board.isGameOver()) {
             for(int playerNo = 0; playerNo<noOfPlayers; playerNo++) {
                 playTurn(playerNo);
                 printer.displayPositions(board);
-                if(board.isGameOver()) {
-                    int winner = board.playerPositions.indexOf(board.finalSquare) + 1;
-                    printer.displayWinner(winner);
-                    return;
-                }
             }
         }
+        int winner = board.playerPositions.indexOf(board.finalSquare) + 1;
+        printer.displayWinner(winner);
     }
 }
