@@ -38,11 +38,11 @@ class GameBoard {
     }
 
     void placeMove(int roll, int player) {
-        int playerCurPos = playerPositions.get(player);
-        int move = playerCurPos + roll;
+        int playerPosition = playerPositions.get(player);
+        int move = playerPosition + roll;
         if(!checkMove(move)) {
-            int nextPos = getNextMove(move);
-            playerPositions.set(player,nextPos);
+            int nextPosition = getNextMove(move);
+            playerPositions.set(player,nextPosition);
         }
     }
 }

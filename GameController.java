@@ -18,17 +18,18 @@ class GameController{
             players[playerNo] = new Player();
     }
 
+    boolean isRolledSix(int roll)
+    {
+        return roll == 6;
+    }
+
     void playerturn(int player) {
         while(true) {
-            int currentPlayer = player+1;
-            System.out.println(currentPlayer+" 's turn");
             roll = players[player].rollDice(dice);
-            System.out.println(currentPlayer+" rolled "+roll);
             board.placeMove(roll,player);
-            if(!dice.isRolledSix(roll)) {
+            if(!isRolledSix(roll)) {
                 return;
             }
-            System.out.println("As "+currentPlayer+" rolled "+roll+"again "+currentPlayer+" 's turn");
         }
     }
 
