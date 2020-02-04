@@ -22,7 +22,7 @@ class GameBoard {
 
     void displayWinner()
     {
-        System.out.println("Winner is "+(playerPositions.indexOf(finalSquare) + 1)+"player");
+        System.out.println("Winner is: "+"player "+(playerPositions.indexOf(finalSquare) + 1));
     }
     
     void displayBoard()
