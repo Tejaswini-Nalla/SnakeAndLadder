@@ -34,6 +34,7 @@ class GameController{
                     board.displayWinner();
                     return;
                 }
+                board.displayBoard();
             }
         }
 

@@ -18,6 +18,16 @@ class GameBoard {
         Map.entry(27,1)       
     );
 
+    void displayWinner()
+    {
+        System.out.println("Winner is "+(playerPositions.get(finalSquare) + 1)+"player");
+    }
+    
+    void displayBoard()
+    {
+        System.out.println(playerPositions);
+    }
+
     boolean isGameOver()
     {
         return playerPositions.contains(finalSquare); 
