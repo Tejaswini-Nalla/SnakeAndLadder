@@ -31,12 +31,16 @@ class GameController{
         }
     }
 
+    void playGame() {
+        for(int playerNo = 0; playerNo<noOfPlayers; playerNo++) {
+            playTurn(playerNo);
+            printer.displayPositions(board);
+        }
+    }
+
     void start() {
         while(!board.isGameOver()) {
-            for(int playerNo = 0; playerNo<noOfPlayers; playerNo++) {
-                playTurn(playerNo);
-                printer.displayPositions(board);
-            }
+            playGame();
         }
         int winner = board.playerPositions.indexOf(board.finalSquare) + 1;
         printer.displayWinner(winner);
