@@ -17,4 +17,9 @@ class Printer{
     {
         System.out.println("Climbed Ladder");
     }
+
+    void printDiceValue(int value, int playerId)
+    {
+        System.out.println("Player "+playerId+" rolled "+value);
+    }
 }

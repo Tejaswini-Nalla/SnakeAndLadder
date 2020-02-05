@@ -2,8 +2,7 @@ import java.util.Random;
 
 class Dice {
 
-    int getDiceValue()
-    { 
+    int getDiceValue() { 
         return new Random().nextInt(6)+1;
     }
 }

@@ -1,7 +1,10 @@
 class Player{
-
-    int rollDice(Dice dice)
+    Printer printer = new Printer();
+    
+    int rollDice(Dice dice, int playerId)
     {
-        return dice.getDiceValue();
+        int diceValue = dice.getDiceValue();
+        printer.printDiceValue(diceValue, playerId);
+        return diceValue;
     }
 }

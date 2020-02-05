@@ -23,11 +23,11 @@ class GameController{
         return rollValue == 6;
     }
 
-    void playTurn(int player) {
-        rollValue = players[player].rollDice(dice);
-        board.placeMove(rollValue,player);
+    void playTurn(int playerId) {
+        rollValue = players[playerId].rollDice(dice,playerId);
+        board.placeMove(rollValue,playerId);
         if(isRolledSix(rollValue)) {
-            playTurn(player);
+            playTurn(playerId);
         }
     }
 
@@ -35,6 +35,8 @@ class GameController{
         for(int playerNo = 0; playerNo<noOfPlayers; playerNo++) {
             playTurn(playerNo);
             printer.displayPositions(board);
+            if(board.isGameOver())
+                break;
         }
     }
 
