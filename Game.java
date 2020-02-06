@@ -1,4 +1,4 @@
-class GameController{
+class Game{
     int noOfPlayers;
     int rollValue;
     Player[] players;
@@ -6,8 +6,8 @@ class GameController{
     Dice dice = new Dice();
     Printer printer = new Printer();
 
-    GameController(){}
-    GameController(int noOfPlayers) {
+    Game(){}
+    Game(int noOfPlayers) {
         this.noOfPlayers = noOfPlayers;
         players = new Player[noOfPlayers];
         board = new GameBoard(noOfPlayers);
@@ -36,14 +36,13 @@ class GameController{
             playTurn(playerNo);
             printer.displayPositions(board);
             if(board.isGameOver())
-                break;
+                return;
         }
+        playGame();
     }
 
     void start() {
-        while(!board.isGameOver()) {
-            playGame();
-        }
+        playGame();
         int winner = board.playerPositions.indexOf(board.finalSquare) + 1;
         printer.displayWinner(winner);
     }

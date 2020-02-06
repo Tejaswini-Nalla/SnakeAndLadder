@@ -20,6 +20,6 @@ class Printer{
 
     void printDiceValue(int value, int playerId)
     {
-        System.out.println("Player "+playerId+" rolled "+value);
+        System.out.println("Player "+(playerId+1)+" rolled "+value);
     }
 }
